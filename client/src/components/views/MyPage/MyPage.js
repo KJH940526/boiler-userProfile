@@ -49,6 +49,7 @@ function MyPage(props) {
 
           setCurrentName(name)
           setCurrentImage(image)
+          setCurrentPassword(password) //주석
 
           //이거 위에 주석처리해보고 아래 콘솔을 비교해보면 useeffect가 어떤 원리로 돌아가는지 느낌 잡을수 있음
           
@@ -126,20 +127,23 @@ function MyPage(props) {
       newImage: filePath !== "" ? filePath : currentImage,
     };  
     
-    if(updatePassword !== ""){
+    // if(updatePassword !== ""){
     axios.post('/api/users/modify',body)
     .then((response) => console.log("mypage",response.data.user))
     alert("회원정보가 수정되었습니다.");
     props.history.push("/"); //auth에서 먼저임
-    } else if(updatePassword == ""){
-      alert("비밀번호를 변경해주세요")
-    }
+    // } 
+    // else if(updatePassword == ""){
+    //   alert("비밀번호를 변경해주세요")
+    // }
   };
   
 
   //모르는 부분
   //비크립트 된 비밀번호가 넘어가는거 모르겠음.. 해쉬랑 패스워드가 같으니깐
   //데이터베이스에서 해쉬값을 커런트 비밀번호에 넣어도 되어야하는거 아닌가?
+  //body를 2개 만들어주던가? 패스워드가 있는거하나랑 없는거 하나???
+  //
 
 
 
